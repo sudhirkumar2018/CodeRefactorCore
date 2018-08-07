@@ -1,0 +1,23 @@
+language:
+    csharp
+dist: trusty 
+mono: latest 
+dotnet: 2.0.0 
+
+os:
+  - linux
+  - osx
+
+before_script:
+    - git submodule update --remote --recursive
+    - dotnet restore ./AuthorizeNET/AuthorizeNET/AuthorizeNET.csproj
+    - dotnet restore ./SampleCode/SampleCode/SampleCode.csproj
+    - dotnet restore ./SampleCode/SampleCodeTest/SampleCodeTest.csproj
+    
+  
+script:
+    - dotnet build ./AuthorizeNET/AuthorizeNET/AuthorizeNET.csproj
+    - dotnet build ./SampleCode/SampleCode/SampleCode.csproj
+    - dotnet build ./SampleCode/SampleCodeTest/SampleCodeTest.csproj
+    - dotnet test ./SampleCode/SampleCodeTest/SampleCodeTest.csproj
+    
