@@ -1,4 +1,4 @@
-﻿namespace AuthorizeNET.Utilities
+﻿namespace AuthorizeNet.Utilities
 {
     public static class Constants
     {
@@ -13,12 +13,12 @@
         public const string HttpProxyPort = "http.proxyPort";
 
         public const string EnvApiLoginid = "API_LOGIN_ID";
-        public const string EnvTransactionKey = "TRANSACTION_KEY";
-        public const string EnvMd5Hashkey = "MD5_HASH_KEY";
+        //public const string EnvTransactionKey = "TRANSACTION_KEY";
+        //public const string EnvMd5Hashkey = "MD5_HASH_KEY";
 
         public const string PropApiLoginid = "api.login.id";
-        public const string PropTransactionKey = "transaction.key";
-        public const string PropMd5Hashkey = "md5.hash.key";
+        //public const string PropTransactionKey = "transaction.key";
+       // public const string PropMd5Hashkey = "md5.hash.key";
 
         public const string HttpConnectionTimeout = "http.connectionTimeout";
         public const string HttpReadWriteTimeout = "http.readWriteTimeout";

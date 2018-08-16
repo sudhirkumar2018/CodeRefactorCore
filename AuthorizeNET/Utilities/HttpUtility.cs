@@ -1,25 +1,25 @@
-﻿namespace AuthorizeNET.Utilities
+﻿namespace AuthorizeNet.Utilities
 {
-    using System;
-    using System.Text;
-    using Api.Contracts.V1;
-    using Api.Controllers.Bases;
-    using Microsoft.Extensions.Logging;
-    using System.Net.Http;
+	using Api.Contracts.V1;
+	using Api.Controllers.Bases;
+	using Microsoft.Extensions.Logging;
+	using System;
+	using System.Net.Http;
+	using System.Text;
 
-    public static class HttpUtility
+	public static class HttpUtility
     {
 
         //Max response size allowed: 64 MB
-        private const int MaxResponseLength = 67108864;
+        //private const int MaxResponseLength = 67108864;
         private static readonly ILogger Logger = LogFactory.getLog(typeof(HttpUtility));
-        private static bool _proxySet;// = false;
+        //private static bool _proxySet;// = false;
 
-        static readonly bool UseProxy = AuthorizeNET.Environment.getBooleanProperty(Constants.HttpsUseProxy);
-        static readonly string ProxyHost = AuthorizeNET.Environment.GetProperty(Constants.HttpsProxyHost);
-        static readonly int ProxyPort = AuthorizeNET.Environment.getIntProperty(Constants.HttpsProxyPort);
+        //static readonly bool UseProxy = AuthorizeNet.Environment.getBooleanProperty(Constants.HttpsUseProxy);
+        //static readonly string ProxyHost = AuthorizeNet.Environment.GetProperty(Constants.HttpsProxyHost);
+        //static readonly int ProxyPort = AuthorizeNet.Environment.getIntProperty(Constants.HttpsProxyPort);
 
-        private static Uri GetPostUrl(AuthorizeNET.Environment env)
+        private static Uri GetPostUrl(AuthorizeNet.Environment env)
         {
             var postUrl = new Uri(env.XmlBaseUrl + "/xml/v1/request.api");
             Logger.LogDebug("Creating PostRequest Url: '{0}'", postUrl);
@@ -27,7 +27,7 @@
             return postUrl;
         }
 
-        public static ANetApiResponse PostData<TQ, TS>(AuthorizeNET.Environment env, TQ request)
+        public static ANetApiResponse PostData<TQ, TS>(AuthorizeNet.Environment env, TQ request)
             where TQ : ANetApiRequest
             where TS : ANetApiResponse
         {
@@ -39,7 +39,7 @@
             Logger.LogDebug("MerchantInfo->LoginId/TransactionKey: '{0}':'{1}'->{2}", request.merchantAuthentication.name, request.merchantAuthentication.ItemElementName, request.merchantAuthentication.Item);
 
             var postUrl = GetPostUrl(env);
-            var requestType = typeof(TQ);
+            //var requestType = typeof(TQ);
             string responseAsString = null;
             using (var clientHandler = new HttpClientHandler())
             {
@@ -47,11 +47,11 @@
                 using (var client = new HttpClient(clientHandler))
                 {
                     //set the http connection timeout 
-                    var httpConnectionTimeout = AuthorizeNET.Environment.getIntProperty(Constants.HttpConnectionTimeout);
+                    var httpConnectionTimeout = AuthorizeNet.Environment.getIntProperty(Constants.HttpConnectionTimeout);
                     client.Timeout = TimeSpan.FromMilliseconds(httpConnectionTimeout != 0 ? httpConnectionTimeout : Constants.HttpConnectionDefaultTimeout);
 
                     //set the time out to read/write from stream
-                    //var httpReadWriteTimeout = AuthorizeNET.Environment.getIntProperty(Constants.HttpReadWriteTimeout);
+                    //var httpReadWriteTimeout = AuthorizeNet.Environment.getIntProperty(Constants.HttpReadWriteTimeout);
                     //client.ReadWriteTimeout = (httpReadWriteTimeout != 0 ? httpReadWriteTimeout : Constants.HttpReadWriteDefaultTimeout);
 
                     var content = new StringContent(XmlUtility.Serialize(request), Encoding.UTF8, "text/xml");

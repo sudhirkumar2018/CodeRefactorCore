@@ -1,4 +1,4 @@
-﻿namespace AuthorizeNET
+﻿namespace AuthorizeNet
 {
     /*================================================================================
     * 
@@ -14,9 +14,9 @@
     public class Environment
     {
         public static readonly Environment SANDBOX = new Environment("https://test.authorize.net", "https://apitest.authorize.net", "https://test.authorize.net");
-        public static readonly Environment PRODUCTION = new Environment("https://secure2.authorize.net", "https://api2.authorize.net", "https://cardpresent.authorize.net");
-        public static readonly Environment LOCAL_VM = new Environment(null, null, null);
-        public static readonly Environment HOSTED_VM = new Environment(null, null, null);
+        //public static readonly Environment PRODUCTION = new Environment("https://secure2.authorize.net", "https://api2.authorize.net", "https://cardpresent.authorize.net");
+        //public static readonly Environment LOCAL_VM = new Environment(null, null, null);
+        //public static readonly Environment HOSTED_VM = new Environment(null, null, null);
         public static Environment CUSTOM = new Environment(null, null, null);
 
         private Environment(string baseUrl, string xmlBaseUrl, string cardPresentUrl)
