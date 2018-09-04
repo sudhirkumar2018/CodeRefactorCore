@@ -4,11 +4,13 @@
     {
         public const string ProxyProtocol = "http";
 
-        public const string HttpsUseProxy = "https.proxyUse";
+        public const string HttpsUseProxy = "http.useProxy";
         public const string HttpsProxyHost = "https.proxyHost";
         public const string HttpsProxyPort = "https.proxyPort";
+	    public const string HttpsProxyUsername = "https.proxyUsername";
+	    public const string HttpsProxyPassword = "https.proxyPassword";
 
-        public const string HttpUseProxy = "http.proxyUse";
+		public const string HttpUseProxy = "http.proxyUse";
         public const string HttpProxyHost = "http.proxyHost";
         public const string HttpProxyPort = "http.proxyPort";
 
